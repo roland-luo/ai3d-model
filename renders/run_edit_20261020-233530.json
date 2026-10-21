@@ -1,0 +1,32 @@
+{
+  "mode": "edit",
+  "prompt": "Keep the metal helmet, its pose, proportions and panel details unchanged. Replace the studio background with a dark futuristic hangar: cold blue volumetric light beams from above, thin ground fog, floating dust particles, subtle warm orange emergency light on the left, glossy dark floor with soft reflections. Add a faint cyan glow inside the horizontal visor slit. Cinematic sci-fi movie poster lighting, dramatic contrast, ultra detailed, no text, no letters, no watermark.",
+  "negative": null,
+  "seed": 777,
+  "batch": 1,
+  "steps": 25,
+  "cfg": 1.0,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "models": {
+    "UNETLoader": "qwen-image-2.1-UC-int8_convrot.safetensors",
+    "CLIPLoader": "qwen3vl_8b_int8_convrot.safetensors",
+    "VAELoader": "qwen_image_2.1_vae_bf16.safetensors"
+  },
+  "comfyui_version": "0.42.1",
+  "prompt_id": "5a9bb883-0d13-41fb-8bee-a9647bb6f785",
+  "started_at": "2026-10-20T23:34:24",
+  "finished_at": "2026-10-20T23:35:30",
+  "elapsed_sec": 66.2,
+  "server": "http://127.0.0.1:8188",
+  "outputs": [
+    {
+      "file": "/home/roland/ai3d/renders/helmet01_poster_edit.png",
+      "bytes": 1431315,
+      "sha256": "b5d9da5e3082026d0b6c0f77553035e73ac8fbad350a0a043b7472c90152e965"
+    }
+  ],
+  "workflow": "/home/roland/ai3d/workflows/api/qwen_edit.json",
+  "input_image": "/home/roland/ai3d/renders/helmet01_poster_input.png",
+  "input_image_sha256": "8179da4ae62e470eab0a3070d7a72c7e54bc514a9283fd85e8508b07a3ba7296"
+}

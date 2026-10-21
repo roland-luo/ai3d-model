@@ -1,0 +1,32 @@
+{
+  "mode": "edit",
+  "prompt": "Convert the reference image into one single standalone retro camera on a pure white seamless background, three-quarter front view, the complete object fully inside the frame with clean empty margin, no floor shadow, no text, no logo, no watermark.",
+  "negative": null,
+  "seed": 1202,
+  "batch": 1,
+  "steps": 25,
+  "cfg": 1.0,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "models": {
+    "UNETLoader": "qwen-image-2.1-UC-int8_convrot.safetensors",
+    "CLIPLoader": "qwen3vl_8b_int8_convrot.safetensors",
+    "VAELoader": "qwen_image_2.1_vae_bf16.safetensors"
+  },
+  "comfyui_version": "0.42.1",
+  "prompt_id": "c60b921a-bf7d-49b1-908c-a9d4b7985e03",
+  "started_at": "2026-10-20T23:44:40",
+  "finished_at": "2026-10-20T23:45:46",
+  "elapsed_sec": 66.1,
+  "server": "http://127.0.0.1:8188",
+  "outputs": [
+    {
+      "file": "/home/roland/ai3d/projects/camera01/refs/hy_input.png",
+      "bytes": 1099698,
+      "sha256": "18a21cbc98203222d221332a54acfcd6079af6242a0b54374e5f851625961b9b"
+    }
+  ],
+  "workflow": "/home/roland/ai3d/workflows/api/qwen_edit.json",
+  "input_image": "/home/roland/ai3d/projects/camera01/refs/chosen.png",
+  "input_image_sha256": "fc26577e91323f74c18d8abf67dc4b8077558fac20960df68e5319c72f05ecef"
+}

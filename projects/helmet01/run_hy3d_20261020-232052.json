@@ -1,0 +1,30 @@
+{
+  "mode": "hy3d",
+  "prompt": null,
+  "negative": null,
+  "seed": 123,
+  "batch": 1,
+  "steps": 30,
+  "cfg": 5.0,
+  "sampler": "euler",
+  "scheduler": "normal",
+  "models": {
+    "ImageOnlyCheckpointLoader": "hunyuan_3d_v2.1.safetensors"
+  },
+  "comfyui_version": "0.42.1",
+  "prompt_id": "b37549c7-2956-4f4d-8fe4-87582d3245f4",
+  "started_at": "2026-10-20T23:19:39",
+  "finished_at": "2026-10-20T23:20:52",
+  "elapsed_sec": 72.9,
+  "server": "http://127.0.0.1:8188",
+  "outputs": [
+    {
+      "file": "/home/roland/ai3d/projects/helmet01/model.glb",
+      "bytes": 9361712,
+      "sha256": "12b09baf8c57165531cc4fef80b36501fde9cb95af512a65c2bc1bac70cb9bdc"
+    }
+  ],
+  "workflow": "/home/roland/ai3d/workflows/api/hy3d.json",
+  "input_image": "/home/roland/ai3d/projects/helmet01/refs/hy_input.png",
+  "input_image_sha256": "e342cd8eb2e3c57acbae58cfe5592510347484e84a320a46bec15ff5e0ac7e6a"
+}

@@ -1,0 +1,30 @@
+{
+  "mode": "hy3d",
+  "prompt": null,
+  "negative": null,
+  "seed": 1409552479,
+  "batch": 1,
+  "steps": 30,
+  "cfg": 5.0,
+  "sampler": "euler",
+  "scheduler": "normal",
+  "models": {
+    "ImageOnlyCheckpointLoader": "hunyuan_3d_v2.1.safetensors"
+  },
+  "comfyui_version": "0.42.1",
+  "prompt_id": "b6f49289-adeb-43c8-b541-e979ba1822a7",
+  "started_at": "2026-10-21T08:16:25",
+  "finished_at": "2026-10-21T08:17:30",
+  "elapsed_sec": 64.6,
+  "server": "http://127.0.0.1:8188",
+  "outputs": [
+    {
+      "file": "/home/roland/ai3d/projects/dragon01/model.glb",
+      "bytes": 5098232,
+      "sha256": "57ee42f3f9646fb1593ad131bdb79940e196bb57ec0f63ad884cf5db480926b2"
+    }
+  ],
+  "workflow": "/home/roland/ai3d/workflows/api/hy3d.json",
+  "input_image": "/home/roland/ai3d/projects/dragon01/refs/hy_input_white.png",
+  "input_image_sha256": "140bac96271aff69ef22e199f9e616bfc4a8ba720c72b61c08782221e2a67aea"
+}

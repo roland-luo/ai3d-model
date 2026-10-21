@@ -1,0 +1,193 @@
+{
+  "project": "helmet01",
+  "blender": "4.2.10 LTS",
+  "stages": {
+    "studio": {
+      "time": "2026-10-20T23:31:52",
+      "blender": "4.2.10 LTS",
+      "mesh": {
+        "verts": 113681,
+        "edges": 358074,
+        "faces": 249999,
+        "tris": 249999,
+        "dims": [
+          0.2506,
+          0.3383,
+          0.35
+        ],
+        "min": [
+          -0.1253,
+          -0.1691,
+          -0.0
+        ],
+        "max": [
+          0.1253,
+          0.1692,
+          0.35
+        ],
+        "materials": [
+          "Helmet_Metal",
+          "Helmet_Rubber"
+        ]
+      },
+      "camera": "AI3D_Camera",
+      "lights": [
+        "AI3D_Key",
+        "AI3D_Fill",
+        "AI3D_Rim",
+        "AI3D_Top",
+        "AI3D_Accent"
+      ]
+    },
+    "import": {
+      "time": "2026-10-20T23:21:25",
+      "blender": "4.2.10 LTS",
+      "mesh": {
+        "verts": 252321,
+        "edges": 774338,
+        "faces": 527622,
+        "tris": 527622,
+        "dims": [
+          0.2507,
+          0.3383,
+          0.35
+        ],
+        "min": [
+          -0.1253,
+          -0.1692,
+          0.0
+        ],
+        "max": [
+          0.1253,
+          0.1692,
+          0.35
+        ],
+        "materials": [
+          "Material_0.001"
+        ]
+      }
+    },
+    "clean": {
+      "time": "2026-10-20T23:21:41",
+      "blender": "4.2.10 LTS",
+      "mesh": {
+        "verts": 113681,
+        "edges": 358074,
+        "faces": 249999,
+        "tris": 249999,
+        "dims": [
+          0.2506,
+          0.3383,
+          0.35
+        ],
+        "min": [
+          -0.1253,
+          -0.1691,
+          -0.0
+        ],
+        "max": [
+          0.1253,
+          0.1692,
+          0.35
+        ],
+        "materials": [
+          "Material_0.001"
+        ]
+      }
+    },
+    "materials": {
+      "time": "2026-10-20T23:30:35",
+      "blender": "4.2.10 LTS",
+      "mesh": {
+        "verts": 113681,
+        "edges": 358074,
+        "faces": 249999,
+        "tris": 249999,
+        "dims": [
+          0.2506,
+          0.3383,
+          0.35
+        ],
+        "min": [
+          -0.1253,
+          -0.1691,
+          -0.0
+        ],
+        "max": [
+          0.1253,
+          0.1692,
+          0.35
+        ],
+        "materials": [
+          "Helmet_Metal",
+          "Helmet_Rubber"
+        ]
+      }
+    },
+    "render": {
+      "time": "2026-10-20T23:40:57",
+      "mode": "final",
+      "output": "/home/roland/ai3d/renders/helmet01_4k.png",
+      "bytes": 34744644,
+      "resolution": [
+        3840,
+        2160
+      ],
+      "samples": 128,
+      "adaptive_threshold": 0.01,
+      "color_depth": 16,
+      "duration_sec": 63,
+      "log": "/home/roland/ai3d/logs/render_helmet01_final_20261020-233954.log"
+    }
+  },
+  "comfy_runs": [
+    "/home/roland/ai3d/projects/helmet01/run_hy3d_20261020-232052.json",
+    "/home/roland/ai3d/projects/helmet01/refs/run_t2i_20261020-231556.json",
+    "/home/roland/ai3d/projects/helmet01/refs/run_t2i_20261020-231728.json",
+    "/home/roland/ai3d/projects/helmet01/refs/run_t2i_20261020-231820.json",
+    "/home/roland/ai3d/projects/helmet01/refs/run_t2i_20261020-231912.json"
+  ],
+  "weights": [
+    {
+      "file": "qwen-image-2.1-UC-int8_convrot.safetensors",
+      "sha256": "5bc5a6c007eff1e0d4004344a24c4af966b9d2c83d142e613b0d456ccceb19ae"
+    },
+    {
+      "file": "qwen3vl_8b_int8_convrot.safetensors",
+      "sha256": "8bfd0f6e12abf2d2d697ecc888e5e90b0d6741d6708f05799f53afa560452e8f"
+    },
+    {
+      "file": "qwen_image_2.1_vae_bf16.safetensors",
+      "sha256": "bb21f7473051e1ac368515dd3f2e15cd44d7a11748ee8823e1ddca3e4876b7c9"
+    },
+    {
+      "file": "hunyuan_3d_v2.1.safetensors",
+      "sha256": "5f21e98a6cb99b13b5e224abaee33929570fff7af2b6a0060001559a04ba9d72"
+    }
+  ],
+  "weight_sources": {
+    "qwen": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized@main (2026-10-20)",
+    "hunyuan": "Comfy-Org/hunyuan3D_2.1_repackaged@main (2026-10-20)"
+  },
+  "poster_runs": [
+    {
+      "manifest": "/home/roland/ai3d/renders/run_edit_20261020-233530.json",
+      "output": "/home/roland/ai3d/renders/helmet01_poster_edit.png",
+      "bytes": 1431315,
+      "sha256": "b5d9da5e3082026d0b6c0f77553035e73ac8fbad350a0a043b7472c90152e965",
+      "seed": 777,
+      "elapsed_sec": 66.2,
+      "prompt_id": "5a9bb883-0d13-41fb-8bee-a9647bb6f785"
+    },
+    {
+      "manifest": "/home/roland/ai3d/renders/run_edit_20261020-233831.json",
+      "output": "/home/roland/ai3d/renders/helmet01_poster_edit_2k.png",
+      "bytes": 3034659,
+      "sha256": "d179ddb5cc36433d3e69513121f002c5e775dcb7b47f2a23cb94df20e332447a",
+      "seed": 777,
+      "elapsed_sec": 164.2,
+      "prompt_id": "cd2329ef-7500-48ef-8c2d-730eb62dc88b"
+    }
+  ],
+  "updated": "2026-10-20T23:39:48"
+}

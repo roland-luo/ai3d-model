@@ -1,0 +1,28 @@
+{
+  "mode": "t2i",
+  "prompt": "A single standalone sci-fi combat helmet, three-quarter front view, floating at eye level against a pure white seamless background, the complete helmet fully inside the frame with clean empty margin around it. Hard-surface industrial design, brushed gunmetal and matte black composite panels, recessed hexagonal vents along the jaw, segmented cheek plates, a narrow wraparound cyan visor slit, exposed rivets, precise panel seams, chamfered edges, subtle edge wear. Realistic product render, crisp studio lighting with soft reflections, high micro-detail, centered composition. No wearer, no neck, no shoulders, no text, no logo, no watermark, no extra objects, no floor shadow.",
+  "negative": null,
+  "seed": 303,
+  "batch": 1,
+  "steps": null,
+  "cfg": null,
+  "models": {
+    "UNETLoader": "qwen-image-2.1-UC-int8_convrot.safetensors",
+    "CLIPLoader": "qwen3vl_8b_int8_convrot.safetensors",
+    "VAELoader": "qwen_image_2.1_vae_bf16.safetensors"
+  },
+  "comfyui_version": "0.42.1",
+  "prompt_id": "a7953375-ef52-46a8-9508-ccd690396c66",
+  "started_at": "2026-10-20T23:16:31",
+  "finished_at": "2026-10-20T23:17:28",
+  "elapsed_sec": 56.1,
+  "server": "http://127.0.0.1:8188",
+  "outputs": [
+    {
+      "file": "/home/roland/ai3d/projects/helmet01/refs/concept_303.png",
+      "bytes": 1394714,
+      "sha256": "6e4c0fbe6bf019ae7563c57953c1c6927813a6a28b9f662594ba7a358e353189"
+    }
+  ],
+  "workflow": "/home/roland/ai3d/workflows/api/qwen_t2i.json"
+}

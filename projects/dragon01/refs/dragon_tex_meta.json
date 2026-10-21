@@ -1,0 +1,14 @@
+{
+  "image_size": [
+    1024,
+    1024
+  ],
+  "bbox": [
+    218,
+    110,
+    792,
+    898
+  ],
+  "model": "dragon01",
+  "source": "chosen.png"
+}

@@ -1,0 +1,35 @@
+{
+  "mode": "t2i",
+  "prompt": "A single retro rangefinder camera, three-quarter front view, floating against a pure white seamless background, the complete object fully inside the frame with clean empty margin. Brushed silver top plate, black leather body, chrome lens barrel with visible dark glass, knurled dials and a small viewfinder window. Hard-surface industrial design, realistic product render, crisp studio lighting with soft reflections, high micro-detail, centered composition. No text, no logo, no watermark, no extra objects, no floor shadow.",
+  "negative": null,
+  "seed": 6101,
+  "batch": 2,
+  "steps": 25,
+  "cfg": 1.0,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "models": {
+    "UNETLoader": "qwen-image-2.1-UC-int8_convrot.safetensors",
+    "CLIPLoader": "qwen3vl_8b_int8_convrot.safetensors",
+    "VAELoader": "qwen_image_2.1_vae_bf16.safetensors"
+  },
+  "comfyui_version": "0.42.1",
+  "prompt_id": "2c3c7f56-4e7f-4991-8d6a-8e88d464ce1a",
+  "started_at": "2026-10-20T23:42:41",
+  "finished_at": "2026-10-20T23:44:24",
+  "elapsed_sec": 102.4,
+  "server": "http://127.0.0.1:8188",
+  "outputs": [
+    {
+      "file": "/home/roland/ai3d/projects/camera01/refs/concept_00005_.png",
+      "bytes": 1167811,
+      "sha256": "24f97ddb4057f57ca3213bbc5571e25a6db1c0579b574d0f8c2cd2513954e7a2"
+    },
+    {
+      "file": "/home/roland/ai3d/projects/camera01/refs/concept_00006_.png",
+      "bytes": 1179030,
+      "sha256": "fc26577e91323f74c18d8abf67dc4b8077558fac20960df68e5319c72f05ecef"
+    }
+  ],
+  "workflow": "/home/roland/ai3d/workflows/api/qwen_t2i.json"
+}

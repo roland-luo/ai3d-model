@@ -1,0 +1,30 @@
+{
+  "mode": "t2i",
+  "prompt": "A single ornate Chinese dragon sculpture, the complete serpentine body coiled into a compact three-dimensional spiral, head raised at the front in three-quarter view, antler-like horns, long whiskers sweeping outward, four clawed limbs gripping the coils, serrated dorsal ridge and detailed overlapping scales. Cast aged bronze with warm gold edge highlights, self-supporting, no base, no pedestal. The complete sculpture floats centered against a pure white seamless background, fully inside the frame with a clean empty margin around it. Studio product photograph, soft directional lighting, strong depth cues and a crisp silhouette, realistic metal micro-detail, centered composition. No text, no logo, no watermark, no extra objects, no floor shadow, no reflection.",
+  "negative": null,
+  "seed": 505,
+  "batch": 1,
+  "steps": 25,
+  "cfg": 1.0,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "models": {
+    "UNETLoader": "qwen-image-2.1-UC-int8_convrot.safetensors",
+    "CLIPLoader": "qwen3vl_8b_int8_convrot.safetensors",
+    "VAELoader": "qwen_image_2.1_vae_bf16.safetensors"
+  },
+  "comfyui_version": "0.42.1",
+  "prompt_id": "24f72825-058c-46f6-965a-2f98cde43549",
+  "started_at": "2026-10-21T08:14:15",
+  "finished_at": "2026-10-21T08:15:10",
+  "elapsed_sec": 54.3,
+  "server": "http://127.0.0.1:8188",
+  "outputs": [
+    {
+      "file": "/home/roland/ai3d/projects/dragon01/refs/concept_00009_.png",
+      "bytes": 1505326,
+      "sha256": "56caa1f200cd143b1cc7b6ed5e99b71f69513e7664eb9bef5453d34ad809f7dc"
+    }
+  ],
+  "workflow": "/home/roland/ai3d/workflows/api/qwen_t2i.json"
+}

@@ -1,0 +1,7 @@
+{
+  "project": "dragon01",
+  "created": "2026-10-21",
+  "subject": "dragon01",
+  "pipeline": "Qwen-Image 2.1 UC -> Hunyuan3D 2.1 -> Blender 4.2 -> 4K still",
+  "license_note": "Qwen UC is Qwen Research License (non-commercial). Hunyuan3D 2.1 has MAU/regional limits."
+}
