@@ -1,0 +1,691 @@
+{
+  "version": 1,
+  "schema": "ai3d.rig.manifest.v1",
+  "created": "2026-11-18 16:46:44",
+  "blender": "4.2.10 LTS",
+  "source_blend": "/home/roland/ai3d/projects/dragon01/parts/dragon01_parts.blend",
+  "config": "/home/roland/ai3d/projects/dragon01/rig.json",
+  "project": "dragon01",
+  "rig_name": "Dragon_Rig",
+  "rig_type": "part_level_v1",
+  "file_stem": "dragon01_rig",
+  "units": "m",
+  "notes": [
+    "身体是刚性绑定到 body 骨；头和四肢是刚性绑定；两根龙须是 3 骨平滑权重。",
+    "鬃毛挂在 body 上而不是 head 上，转头时它仍能遮住颈后切口。",
+    "这不是最终的脊柱蒙皮。身体的非流形薄壳要先重拓扑，才能沿脊柱变形。",
+    "所有件保留独立对象，可以在 pose 模式下单独调骨，也可以在编辑模式改网格。"
+  ],
+  "bones": [
+    {
+      "name": "root",
+      "parent": null,
+      "head": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail": [
+        0.0,
+        0.0,
+        0.05
+      ],
+      "connected": false,
+      "deform": true
+    },
+    {
+      "name": "body",
+      "parent": "root",
+      "head": [
+        -0.00408,
+        0.01215,
+        0.022
+      ],
+      "tail": [
+        -0.00408,
+        0.01215,
+        0.142
+      ],
+      "connected": false,
+      "deform": true
+    },
+    {
+      "name": "head",
+      "parent": "body",
+      "head": [
+        0.03188,
+        0.02428,
+        0.2864
+      ],
+      "tail": [
+        0.05768,
+        0.00742,
+        0.30299
+      ],
+      "connected": false,
+      "deform": true
+    },
+    {
+      "name": "antlers",
+      "parent": "head",
+      "head": [
+        0.0241,
+        0.0166,
+        0.3309
+      ],
+      "tail": [
+        -0.01901,
+        0.0088,
+        0.37075
+      ],
+      "connected": false,
+      "deform": true
+    },
+    {
+      "name": "whisker_A_1",
+      "parent": "head",
+      "head": [
+        0.085,
+        -0.01,
+        0.3
+      ],
+      "tail": [
+        0.06737,
+        -0.0251,
+        0.27887
+      ],
+      "connected": false,
+      "deform": true
+    },
+    {
+      "name": "whisker_A_2",
+      "parent": "whisker_A_1",
+      "head": [
+        0.06737,
+        -0.0251,
+        0.27887
+      ],
+      "tail": [
+        0.04813,
+        -0.03427,
+        0.25593
+      ],
+      "connected": true,
+      "deform": true
+    },
+    {
+      "name": "whisker_A_3",
+      "parent": "whisker_A_2",
+      "head": [
+        0.04813,
+        -0.03427,
+        0.25593
+      ],
+      "tail": [
+        0.03,
+        -0.05,
+        0.236
+      ],
+      "connected": true,
+      "deform": true
+    },
+    {
+      "name": "whisker_B_1",
+      "parent": "head",
+      "head": [
+        0.09776,
+        0.03397,
+        0.2982
+      ],
+      "tail": [
+        0.10392,
+        0.03703,
+        0.28741
+      ],
+      "connected": false,
+      "deform": true
+    },
+    {
+      "name": "whisker_B_2",
+      "parent": "whisker_B_1",
+      "head": [
+        0.10392,
+        0.03703,
+        0.28741
+      ],
+      "tail": [
+        0.11286,
+        0.04346,
+        0.28006
+      ],
+      "connected": true,
+      "deform": true
+    },
+    {
+      "name": "whisker_B_3",
+      "parent": "whisker_B_2",
+      "head": [
+        0.11286,
+        0.04346,
+        0.28006
+      ],
+      "tail": [
+        0.12334,
+        0.04879,
+        0.27469
+      ],
+      "connected": true,
+      "deform": true
+    },
+    {
+      "name": "mane",
+      "parent": "body",
+      "head": [
+        0.01384,
+        0.04303,
+        0.31083
+      ],
+      "tail": [
+        -0.08159,
+        0.03921,
+        0.27431
+      ],
+      "connected": false,
+      "deform": true
+    },
+    {
+      "name": "leg_A",
+      "parent": "body",
+      "head": [
+        0.07408,
+        0.04933,
+        0.18213
+      ],
+      "tail": [
+        0.0843,
+        0.04071,
+        0.21734
+      ],
+      "connected": false,
+      "deform": true
+    },
+    {
+      "name": "leg_B",
+      "parent": "body",
+      "head": [
+        0.04161,
+        -0.02812,
+        0.08674
+      ],
+      "tail": [
+        0.03099,
+        -0.0251,
+        0.05699
+      ],
+      "connected": false,
+      "deform": true
+    },
+    {
+      "name": "leg_C",
+      "parent": "body",
+      "head": [
+        -0.06748,
+        0.02035,
+        0.07088
+      ],
+      "tail": [
+        -0.1079,
+        0.03226,
+        0.07505
+      ],
+      "connected": false,
+      "deform": true
+    }
+  ],
+  "parts": {
+    "Dragon_Body": {
+      "bone": "body",
+      "mode": "rigid",
+      "blend_targets": [
+        "head",
+        "leg_A",
+        "leg_B",
+        "leg_C"
+      ]
+    },
+    "Dragon_Head": {
+      "parent": "body",
+      "pivot": [
+        0.03188,
+        0.02428,
+        0.2864
+      ],
+      "shared_vertices": 380,
+      "shared_mode": "shared",
+      "blend_radius_m": 0.065,
+      "bones": [
+        "head"
+      ],
+      "mode": "rigid"
+    },
+    "Dragon_Antlers": {
+      "parent": "head",
+      "pivot": [
+        0.0241,
+        0.0166,
+        0.3309
+      ],
+      "shared_vertices": 116,
+      "shared_mode": "shared",
+      "bones": [
+        "antlers"
+      ],
+      "mode": "rigid"
+    },
+    "Dragon_Mane": {
+      "parent": "body",
+      "pivot": [
+        0.01384,
+        0.04303,
+        0.31083
+      ],
+      "shared_vertices": 0,
+      "shared_mode": "nearest",
+      "bones": [
+        "mane"
+      ],
+      "mode": "rigid"
+    },
+    "Dragon_Leg_A": {
+      "parent": "body",
+      "pivot": [
+        0.07408,
+        0.04933,
+        0.18213
+      ],
+      "shared_vertices": 149,
+      "shared_mode": "shared",
+      "blend_radius_m": 0.035,
+      "bones": [
+        "leg_A"
+      ],
+      "mode": "rigid"
+    },
+    "Dragon_Leg_B": {
+      "parent": "body",
+      "pivot": [
+        0.04161,
+        -0.02812,
+        0.08674
+      ],
+      "shared_vertices": 182,
+      "shared_mode": "shared",
+      "blend_radius_m": 0.035,
+      "bones": [
+        "leg_B"
+      ],
+      "mode": "rigid"
+    },
+    "Dragon_Leg_C": {
+      "parent": "body",
+      "pivot": [
+        -0.06748,
+        0.02035,
+        0.07088
+      ],
+      "shared_vertices": 139,
+      "shared_mode": "shared",
+      "blend_radius_m": 0.035,
+      "bones": [
+        "leg_C"
+      ],
+      "mode": "rigid"
+    },
+    "Dragon_Whisker_A": {
+      "bones": [
+        "whisker_A_1",
+        "whisker_A_2",
+        "whisker_A_3"
+      ],
+      "segments": 3,
+      "parent": "head",
+      "polyline": [
+        [
+          0.085,
+          -0.01,
+          0.3
+        ],
+        [
+          0.078,
+          -0.018,
+          0.29
+        ],
+        [
+          0.07,
+          -0.024,
+          0.281
+        ],
+        [
+          0.06,
+          -0.0282,
+          0.2729
+        ],
+        [
+          0.052,
+          -0.0318,
+          0.2625
+        ],
+        [
+          0.047,
+          -0.035,
+          0.254
+        ],
+        [
+          0.044,
+          -0.04,
+          0.25
+        ],
+        [
+          0.037,
+          -0.045,
+          0.243
+        ],
+        [
+          0.03,
+          -0.05,
+          0.236
+        ]
+      ],
+      "mode": "smooth"
+    },
+    "Dragon_Whisker_B": {
+      "bones": [
+        "whisker_B_1",
+        "whisker_B_2",
+        "whisker_B_3"
+      ],
+      "segments": 3,
+      "parent": "head",
+      "polyline": [
+        [
+          0.09776,
+          0.03397,
+          0.2982
+        ],
+        [
+          0.09843,
+          0.03507,
+          0.29494
+        ],
+        [
+          0.1,
+          0.03515,
+          0.29162
+        ],
+        [
+          0.10256,
+          0.03545,
+          0.2897
+        ],
+        [
+          0.10409,
+          0.03723,
+          0.28712
+        ],
+        [
+          0.10615,
+          0.03913,
+          0.28557
+        ],
+        [
+          0.1079,
+          0.0409,
+          0.28329
+        ],
+        [
+          0.11025,
+          0.04235,
+          0.28113
+        ],
+        [
+          0.11343,
+          0.0437,
+          0.27982
+        ],
+        [
+          0.11674,
+          0.0442,
+          0.2789
+        ],
+        [
+          0.11936,
+          0.04499,
+          0.27748
+        ],
+        [
+          0.12092,
+          0.04727,
+          0.27614
+        ],
+        [
+          0.12334,
+          0.04879,
+          0.27469
+        ]
+      ],
+      "mode": "smooth"
+    }
+  },
+  "body_blend": [
+    {
+      "part": "Dragon_Head",
+      "bone": "head",
+      "cut_vertices": 380,
+      "blended_vertices": 9631,
+      "radius_m": 0.065
+    },
+    {
+      "part": "Dragon_Leg_A",
+      "bone": "leg_A",
+      "cut_vertices": 149,
+      "blended_vertices": 3196,
+      "radius_m": 0.035
+    },
+    {
+      "part": "Dragon_Leg_B",
+      "bone": "leg_B",
+      "cut_vertices": 182,
+      "blended_vertices": 7990,
+      "radius_m": 0.035
+    },
+    {
+      "part": "Dragon_Leg_C",
+      "bone": "leg_C",
+      "cut_vertices": 139,
+      "blended_vertices": 5383,
+      "radius_m": 0.035
+    }
+  ],
+  "preview": {
+    "pose": [
+      [
+        "body",
+        "Z",
+        8
+      ],
+      [
+        "body",
+        "X",
+        -4
+      ],
+      [
+        "head",
+        "Z",
+        -14
+      ],
+      [
+        "head",
+        "X",
+        -6
+      ],
+      [
+        "leg_A",
+        "X",
+        -20
+      ],
+      [
+        "leg_A",
+        "Z",
+        6
+      ],
+      [
+        "leg_B",
+        "X",
+        14
+      ],
+      [
+        "leg_C",
+        "Y",
+        12
+      ],
+      [
+        "whisker_A_2",
+        "Z",
+        6
+      ],
+      [
+        "whisker_A_3",
+        "Z",
+        5
+      ],
+      [
+        "whisker_B_2",
+        "Z",
+        -6
+      ],
+      [
+        "whisker_B_3",
+        "Z",
+        -5
+      ]
+    ],
+    "head_parts": [
+      "Dragon_Head",
+      "Dragon_Antlers",
+      "Dragon_Mane",
+      "Dragon_Whisker_A",
+      "Dragon_Whisker_B"
+    ],
+    "head_hide": [
+      "Dragon_Leg_A",
+      "Dragon_Leg_B",
+      "Dragon_Leg_C"
+    ],
+    "camera": {
+      "rest": [
+        0.55,
+        -1.65,
+        0.3
+      ],
+      "pose_3q": [
+        0.55,
+        -1.65,
+        0.3
+      ],
+      "pose_front": [
+        0.0,
+        -1.65,
+        0.15
+      ],
+      "pose_side": [
+        -1.65,
+        0.0,
+        0.15
+      ],
+      "head": [
+        0.45,
+        -1.55,
+        0.35
+      ]
+    }
+  },
+  "verify": {
+    "pose_tests": [
+      {
+        "name": "转头 25°",
+        "bone": "head",
+        "axis": "Z",
+        "deg": 25,
+        "moves": [
+          {
+            "part": "Dragon_Head",
+            "min_mm": 20
+          },
+          {
+            "part": "Dragon_Antlers",
+            "min_mm": 15
+          },
+          {
+            "part": "Dragon_Body",
+            "min_mm": 1
+          }
+        ],
+        "stays": [
+          {
+            "part": "Dragon_Mane",
+            "max_mm": 2
+          }
+        ]
+      },
+      {
+        "name": "转爪 20°",
+        "bone": "leg_C",
+        "axis": "Y",
+        "deg": 20,
+        "moves": [
+          {
+            "part": "Dragon_Leg_C",
+            "min_mm": 10
+          },
+          {
+            "part": "Dragon_Body",
+            "min_mm": 0.5
+          }
+        ],
+        "stays": [
+          {
+            "part": "Dragon_Head",
+            "max_mm": 1
+          }
+        ]
+      },
+      {
+        "name": "转龙须 A 15°",
+        "bone": "whisker_A_2",
+        "axis": "Z",
+        "deg": 15,
+        "moves": [
+          {
+            "part": "Dragon_Whisker_A",
+            "min_mm": 5
+          }
+        ],
+        "stays": [
+          {
+            "part": "Dragon_Whisker_B",
+            "max_mm": 0.5
+          },
+          {
+            "part": "Dragon_Head",
+            "max_mm": 0.5
+          }
+        ]
+      }
+    ]
+  },
+  "counts": {
+    "bones": 14,
+    "meshes": 9,
+    "triangles": 249708
+  }
+}

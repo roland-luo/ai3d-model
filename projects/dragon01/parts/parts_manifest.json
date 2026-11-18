@@ -1,0 +1,761 @@
+{
+  "version": 1,
+  "created": "2026-10-21 15:02:45",
+  "blender": "4.2.10 LTS",
+  "config": "/home/roland/ai3d/projects/dragon01/parts.json",
+  "source_blend": "/home/roland/ai3d/blend/dragon01.blend",
+  "source_object": "dragon01_model",
+  "source_stats": {
+    "verts": 119320,
+    "faces": 249999,
+    "bbox_min": [
+      -0.12496,
+      -0.06389,
+      0.022
+    ],
+    "bbox_max": [
+      0.12496,
+      0.06389,
+      0.372
+    ],
+    "materials": [
+      "Dragon_Bronze"
+    ]
+  },
+  "seeds": {
+    "Dragon_Whisker_A": {
+      "mode": "capsule",
+      "points": [
+        [
+          0.085,
+          -0.01,
+          0.3
+        ],
+        [
+          0.078,
+          -0.018,
+          0.29
+        ],
+        [
+          0.07,
+          -0.024,
+          0.281
+        ],
+        [
+          0.06,
+          -0.0282,
+          0.2729
+        ],
+        [
+          0.052,
+          -0.0318,
+          0.2625
+        ],
+        [
+          0.047,
+          -0.035,
+          0.254
+        ],
+        [
+          0.044,
+          -0.04,
+          0.25
+        ],
+        [
+          0.037,
+          -0.045,
+          0.243
+        ],
+        [
+          0.03,
+          -0.05,
+          0.236
+        ]
+      ],
+      "radius_mm": 4.5,
+      "vertices": 794
+    },
+    "Dragon_Head": {
+      "mode": "geodesic",
+      "radius_mm": 110.0,
+      "seeds": [
+        {
+          "target": [
+            0.0913,
+            -0.007,
+            0.3164
+          ],
+          "vertex": 47293,
+          "snapped": [
+            0.09134,
+            -0.00701,
+            0.31644
+          ],
+          "distance_mm": 0.061
+        }
+      ],
+      "vertices": 18549
+    },
+    "Dragon_Antlers": {
+      "mode": "geodesic",
+      "radius_mm": 45.0,
+      "seeds": [
+        {
+          "target": [
+            -0.0191,
+            0.0098,
+            0.3708
+          ],
+          "vertex": 90031,
+          "snapped": [
+            -0.01905,
+            0.00981,
+            0.37079
+          ],
+          "distance_mm": 0.048
+        },
+        {
+          "target": [
+            -0.0259,
+            0.016,
+            0.3551
+          ],
+          "vertex": 88827,
+          "snapped": [
+            -0.0259,
+            0.01597,
+            0.3551
+          ],
+          "distance_mm": 0.026
+        },
+        {
+          "target": [
+            0.02,
+            0.0109,
+            0.3501
+          ],
+          "vertex": 109347,
+          "snapped": [
+            0.02003,
+            0.01088,
+            0.35013
+          ],
+          "distance_mm": 0.047
+        }
+      ],
+      "vertices": 5528
+    },
+    "Dragon_Mane": {
+      "mode": "geodesic",
+      "radius_mm": 50.0,
+      "seeds": [
+        {
+          "target": [
+            -0.06,
+            0.0413,
+            0.3157
+          ],
+          "vertex": 96935,
+          "snapped": [
+            -0.06023,
+            0.04179,
+            0.31559
+          ],
+          "distance_mm": 0.554
+        },
+        {
+          "target": [
+            -0.0491,
+            0.0419,
+            0.3109
+          ],
+          "vertex": 8621,
+          "snapped": [
+            -0.0491,
+            0.04188,
+            0.31093
+          ],
+          "distance_mm": 0.033
+        },
+        {
+          "target": [
+            -0.0406,
+            0.0527,
+            0.2995
+          ],
+          "vertex": 1787,
+          "snapped": [
+            -0.04057,
+            0.05273,
+            0.29954
+          ],
+          "distance_mm": 0.06
+        },
+        {
+          "target": [
+            -0.0294,
+            0.0505,
+            0.2898
+          ],
+          "vertex": 2830,
+          "snapped": [
+            -0.02936,
+            0.05054,
+            0.28978
+          ],
+          "distance_mm": 0.065
+        }
+      ],
+      "vertices": 7860
+    },
+    "Dragon_Whisker_B": {
+      "mode": "geodesic",
+      "radius_mm": 90.0,
+      "seeds": [
+        {
+          "target": [
+            0.1235,
+            0.049,
+            0.2757
+          ],
+          "vertex": 3413,
+          "snapped": [
+            0.12352,
+            0.04899,
+            0.27574
+          ],
+          "distance_mm": 0.051
+        }
+      ],
+      "vertices": 3552
+    },
+    "Dragon_Leg_A": {
+      "mode": "geodesic",
+      "radius_mm": 45.0,
+      "seeds": [
+        {
+          "target": [
+            0.1021,
+            0.0542,
+            0.1929
+          ],
+          "vertex": 1345,
+          "snapped": [
+            0.10212,
+            0.05425,
+            0.19294
+          ],
+          "distance_mm": 0.067
+        }
+      ],
+      "vertices": 2909
+    },
+    "Dragon_Leg_B": {
+      "mode": "geodesic",
+      "radius_mm": 35.0,
+      "seeds": [
+        {
+          "target": [
+            0.0436,
+            -0.043,
+            0.0821
+          ],
+          "vertex": 56464,
+          "snapped": [
+            0.04362,
+            -0.04302,
+            0.08207
+          ],
+          "distance_mm": 0.046
+        }
+      ],
+      "vertices": 1916
+    },
+    "Dragon_Leg_C": {
+      "mode": "geodesic",
+      "radius_mm": 45.0,
+      "seeds": [
+        {
+          "target": [
+            -0.0939,
+            0.042,
+            0.0652
+          ],
+          "vertex": 7816,
+          "snapped": [
+            -0.09392,
+            0.04202,
+            0.06523
+          ],
+          "distance_mm": 0.039
+        }
+      ],
+      "vertices": 3147
+    }
+  },
+  "islands": {
+    "Dragon_Body": {
+      "islands": 102,
+      "largest": 149960,
+      "second": 20280,
+      "kept_islands": [
+        149960,
+        20280,
+        386,
+        375
+      ],
+      "dropped_faces": 538
+    },
+    "Dragon_Head": {
+      "islands": 44,
+      "largest": 32089,
+      "second": 96,
+      "kept_islands": [
+        32089,
+        96
+      ],
+      "dropped_faces": 42
+    },
+    "Dragon_Antlers": {
+      "islands": 1,
+      "largest": 10118,
+      "second": 0,
+      "kept_islands": [
+        10118
+      ],
+      "dropped_faces": 0
+    },
+    "Dragon_Mane": {
+      "islands": 1,
+      "largest": 16478,
+      "second": 0,
+      "kept_islands": [
+        16478
+      ],
+      "dropped_faces": 0
+    },
+    "Dragon_Whisker_A": {
+      "islands": 2,
+      "largest": 1565,
+      "second": 211,
+      "kept_islands": [
+        1565,
+        211
+      ],
+      "dropped_faces": 0
+    },
+    "Dragon_Whisker_B": {
+      "islands": 1,
+      "largest": 1002,
+      "second": 0,
+      "kept_islands": [
+        1002
+      ],
+      "dropped_faces": 0
+    },
+    "Dragon_Leg_A": {
+      "islands": 19,
+      "largest": 6127,
+      "second": 1,
+      "kept_islands": [
+        6127
+      ],
+      "dropped_faces": 18
+    },
+    "Dragon_Leg_B": {
+      "islands": 26,
+      "largest": 4071,
+      "second": 1,
+      "kept_islands": [
+        4071
+      ],
+      "dropped_faces": 25
+    },
+    "Dragon_Leg_C": {
+      "islands": 18,
+      "largest": 6601,
+      "second": 1,
+      "kept_islands": [
+        6601
+      ],
+      "dropped_faces": 17
+    }
+  },
+  "parts": [
+    {
+      "verts": 82752,
+      "faces": 171023,
+      "tris": 171182,
+      "boundary_edges": 1340,
+      "nonmanifold_edges": 9391,
+      "nonmanifold_verts": 7425,
+      "loose_verts": 0,
+      "loose_edges": 0,
+      "islands": 4,
+      "watertight": false,
+      "volume_m3": 0.0010539402,
+      "uv_layers": [
+        "AI3D_Front"
+      ],
+      "materials": [
+        "Dragon_Bronze"
+      ],
+      "dimensions_m": [
+        0.24177,
+        0.10348,
+        0.35
+      ],
+      "location_m": [
+        -0.00408,
+        0.01215,
+        0.197
+      ],
+      "id": "Dragon_Body",
+      "label_zh": "龙身",
+      "boundary_before_fill": 1565,
+      "island_report": {
+        "islands": 102,
+        "largest": 149960,
+        "second": 20280,
+        "kept_islands": [
+          149960,
+          20280,
+          386,
+          375
+        ],
+        "dropped_faces": 538
+      }
+    },
+    {
+      "verts": 15554,
+      "faces": 32199,
+      "tris": 32286,
+      "boundary_edges": 560,
+      "nonmanifold_edges": 2443,
+      "nonmanifold_verts": 2115,
+      "loose_verts": 0,
+      "loose_edges": 0,
+      "islands": 2,
+      "watertight": false,
+      "volume_m3": 7.92962e-05,
+      "uv_layers": [
+        "AI3D_Front"
+      ],
+      "materials": [
+        "Dragon_Bronze"
+      ],
+      "dimensions_m": [
+        0.13467,
+        0.09036,
+        0.10215
+      ],
+      "location_m": [
+        0.05763,
+        0.00745,
+        0.30296
+      ],
+      "id": "Dragon_Head",
+      "label_zh": "龙头",
+      "boundary_before_fill": 689,
+      "island_report": {
+        "islands": 44,
+        "largest": 32089,
+        "second": 96,
+        "kept_islands": [
+          32089,
+          96
+        ],
+        "dropped_faces": 42
+      }
+    },
+    {
+      "verts": 4790,
+      "faces": 10123,
+      "tris": 10130,
+      "boundary_edges": 247,
+      "nonmanifold_edges": 1080,
+      "nonmanifold_verts": 856,
+      "loose_verts": 0,
+      "loose_edges": 0,
+      "islands": 1,
+      "watertight": false,
+      "volume_m3": 4.5305e-06,
+      "uv_layers": [
+        "AI3D_Front"
+      ],
+      "materials": [
+        "Dragon_Bronze"
+      ],
+      "dimensions_m": [
+        0.06833,
+        0.04216,
+        0.05137
+      ],
+      "location_m": [
+        0.00816,
+        0.02254,
+        0.34629
+      ],
+      "id": "Dragon_Antlers",
+      "label_zh": "龙角",
+      "boundary_before_fill": 269,
+      "island_report": {
+        "islands": 1,
+        "largest": 10118,
+        "second": 0,
+        "kept_islands": [
+          10118
+        ],
+        "dropped_faces": 0
+      }
+    },
+    {
+      "verts": 8129,
+      "faces": 16479,
+      "tris": 16501,
+      "boundary_edges": 381,
+      "nonmanifold_edges": 819,
+      "nonmanifold_verts": 628,
+      "loose_verts": 0,
+      "loose_edges": 0,
+      "islands": 1,
+      "watertight": false,
+      "volume_m3": 6.72618e-05,
+      "uv_layers": [
+        "AI3D_Front"
+      ],
+      "materials": [
+        "Dragon_Bronze"
+      ],
+      "dimensions_m": [
+        0.09583,
+        0.04407,
+        0.10327
+      ],
+      "location_m": [
+        -0.03367,
+        0.03556,
+        0.29218
+      ],
+      "id": "Dragon_Mane",
+      "label_zh": "鬃毛",
+      "boundary_before_fill": 406,
+      "island_report": {
+        "islands": 1,
+        "largest": 16478,
+        "second": 0,
+        "kept_islands": [
+          16478
+        ],
+        "dropped_faces": 0
+      }
+    },
+    {
+      "verts": 886,
+      "faces": 1779,
+      "tris": 1785,
+      "boundary_edges": 119,
+      "nonmanifold_edges": 197,
+      "nonmanifold_verts": 197,
+      "loose_verts": 0,
+      "loose_edges": 0,
+      "islands": 2,
+      "watertight": false,
+      "volume_m3": 1.0853e-06,
+      "uv_layers": [
+        "AI3D_Front"
+      ],
+      "materials": [
+        "Dragon_Bronze"
+      ],
+      "dimensions_m": [
+        0.06256,
+        0.04945,
+        0.07064
+      ],
+      "location_m": [
+        0.05866,
+        -0.03036,
+        0.26853
+      ],
+      "id": "Dragon_Whisker_A",
+      "label_zh": "前垂龙须",
+      "boundary_before_fill": 134,
+      "island_report": {
+        "islands": 2,
+        "largest": 1565,
+        "second": 211,
+        "kept_islands": [
+          1565,
+          211
+        ],
+        "dropped_faces": 0
+      }
+    },
+    {
+      "verts": 470,
+      "faces": 1003,
+      "tris": 1014,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 116,
+      "nonmanifold_verts": 101,
+      "loose_verts": 0,
+      "loose_edges": 0,
+      "islands": 1,
+      "watertight": false,
+      "volume_m3": 4.123e-07,
+      "uv_layers": [
+        "AI3D_Front"
+      ],
+      "materials": [
+        "Dragon_Bronze"
+      ],
+      "dimensions_m": [
+        0.02623,
+        0.01825,
+        0.02568
+      ],
+      "location_m": [
+        0.11087,
+        0.04001,
+        0.2875
+      ],
+      "id": "Dragon_Whisker_B",
+      "label_zh": "右侧龙须",
+      "boundary_before_fill": 14,
+      "island_report": {
+        "islands": 1,
+        "largest": 1002,
+        "second": 0,
+        "kept_islands": [
+          1002
+        ],
+        "dropped_faces": 0
+      }
+    },
+    {
+      "verts": 2996,
+      "faces": 6132,
+      "tris": 6134,
+      "boundary_edges": 185,
+      "nonmanifold_edges": 467,
+      "nonmanifold_verts": 402,
+      "loose_verts": 0,
+      "loose_edges": 0,
+      "islands": 1,
+      "watertight": false,
+      "volume_m3": 8.4765e-06,
+      "uv_layers": [
+        "AI3D_Front"
+      ],
+      "materials": [
+        "Dragon_Bronze"
+      ],
+      "dimensions_m": [
+        0.0402,
+        0.03045,
+        0.04847
+      ],
+      "location_m": [
+        0.08323,
+        0.04829,
+        0.19316
+      ],
+      "id": "Dragon_Leg_A",
+      "label_zh": "右上爪",
+      "boundary_before_fill": 202,
+      "island_report": {
+        "islands": 19,
+        "largest": 6127,
+        "second": 1,
+        "kept_islands": [
+          6127
+        ],
+        "dropped_faces": 18
+      }
+    },
+    {
+      "verts": 1996,
+      "faces": 4073,
+      "tris": 4074,
+      "boundary_edges": 202,
+      "nonmanifold_edges": 365,
+      "nonmanifold_verts": 272,
+      "loose_verts": 0,
+      "loose_edges": 0,
+      "islands": 1,
+      "watertight": false,
+      "volume_m3": 4.0231e-06,
+      "uv_layers": [
+        "AI3D_Front"
+      ],
+      "materials": [
+        "Dragon_Bronze"
+      ],
+      "dimensions_m": [
+        0.04754,
+        0.02617,
+        0.05109
+      ],
+      "location_m": [
+        0.04073,
+        -0.02994,
+        0.08184
+      ],
+      "id": "Dragon_Leg_B",
+      "label_zh": "腹前爪",
+      "boundary_before_fill": 209,
+      "island_report": {
+        "islands": 26,
+        "largest": 4071,
+        "second": 1,
+        "kept_islands": [
+          4071
+        ],
+        "dropped_faces": 25
+      }
+    },
+    {
+      "verts": 3216,
+      "faces": 6602,
+      "tris": 6602,
+      "boundary_edges": 158,
+      "nonmanifold_edges": 447,
+      "nonmanifold_verts": 368,
+      "loose_verts": 0,
+      "loose_edges": 0,
+      "islands": 1,
+      "watertight": false,
+      "volume_m3": 1.67631e-05,
+      "uv_layers": [
+        "AI3D_Front"
+      ],
+      "materials": [
+        "Dragon_Bronze"
+      ],
+      "dimensions_m": [
+        0.05706,
+        0.03754,
+        0.04545
+      ],
+      "location_m": [
+        -0.07937,
+        0.02325,
+        0.07057
+      ],
+      "id": "Dragon_Leg_C",
+      "label_zh": "左下爪",
+      "boundary_before_fill": 161,
+      "island_report": {
+        "islands": 18,
+        "largest": 6601,
+        "second": 1,
+        "kept_islands": [
+          6601
+        ],
+        "dropped_faces": 17
+      }
+    }
+  ],
+  "skipped": []
+}

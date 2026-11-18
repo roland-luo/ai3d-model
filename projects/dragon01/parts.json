@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "source_object": "dragon01_model",
+  "out_dir": "parts",
+  "collection": "dragon01_Parts",
+  "fill_holes": true,
+  "smoothing_passes": 3,
+  "min_island_faces": 30,
+  "island_keep_ratio": 0.002,
+  "shade_smooth": true,
+  "export_parts_centered": true,
+  "_notes": [
+    "坐标单位是米，和 Blender 场景一致；种子会自动吸附到最近的网格顶点。",
+    "radius_m 是沿表面生长的最远距离。细长部位建议 3-6 cm，龙头 10-12 cm。",
+    "龙须这种又细又容易贴到身体的部位，用 capsule 折线 + 半径圈住，比球更准。",
+    "fallback 部件不能再写 seeds/capsule；没被认领的面都会归它。",
+    "想改分件，先跑 --print-fps 32，再对照 parts/inspect 里的坐标网格图挑点。"
+  ],
+  "parts": [
+    {
+      "id": "Dragon_Body",
+      "label_zh": "龙身",
+      "color": "#8A8F96",
+      "fallback": true,
+      "fill_holes": true,
+      "solidify_mm": 0,
+      "explode_mm": [0, 0, 0]
+    },
+    {
+      "id": "Dragon_Head",
+      "label_zh": "龙头",
+      "color": "#E0A45A",
+      "seeds": [[0.0913, -0.007, 0.3164]],
+      "radius_m": 0.11,
+      "fill_holes": true,
+      "explode_mm": [45, 0, 42]
+    },
+    {
+      "id": "Dragon_Antlers",
+      "label_zh": "龙角",
+      "color": "#E040C8",
+      "protect": true,
+      "seeds": [
+        [-0.0191, 0.0098, 0.3708],
+        [-0.0259, 0.016, 0.3551],
+        [0.02, 0.0109, 0.3501]
+      ],
+      "radius_m": 0.045,
+      "fill_holes": true,
+      "explode_mm": [10, 8, 118]
+    },
+    {
+      "id": "Dragon_Mane",
+      "label_zh": "鬃毛",
+      "color": "#9EE040",
+      "protect": true,
+      "seeds": [
+        [-0.06, 0.0413, 0.3157],
+        [-0.0491, 0.0419, 0.3109],
+        [-0.0406, 0.0527, 0.2995],
+        [-0.0294, 0.0505, 0.2898]
+      ],
+      "radius_m": 0.05,
+      "fill_holes": true,
+      "explode_mm": [-45, 65, 25]
+    },
+    {
+      "id": "Dragon_Whisker_A",
+      "label_zh": "前垂龙须",
+      "color": "#20D8E8",
+      "protect": true,
+      "capsule": {
+        "points": [
+          [0.085, -0.010, 0.300],
+          [0.078, -0.018, 0.290],
+          [0.070, -0.024, 0.281],
+          [0.060, -0.0282, 0.2729],
+          [0.052, -0.0318, 0.2625],
+          [0.047, -0.035, 0.254],
+          [0.044, -0.040, 0.250],
+          [0.037, -0.045, 0.243],
+          [0.030, -0.050, 0.236]
+        ],
+        "radius_m": 0.0045
+      },
+      "fill_holes": true,
+      "explode_mm": [140, -20, 30]
+    },
+    {
+      "id": "Dragon_Whisker_B",
+      "label_zh": "右侧龙须",
+      "color": "#2050E8",
+      "protect": true,
+      "seeds": [[0.1235, 0.049, 0.2757]],
+      "radius_m": 0.09,
+      "fill_holes": true,
+      "explode_mm": [85, 55, 28]
+    },
+    {
+      "id": "Dragon_Leg_A",
+      "label_zh": "右上爪",
+      "color": "#F08A20",
+      "seeds": [[0.1021, 0.0542, 0.1929]],
+      "radius_m": 0.045,
+      "fill_holes": true,
+      "explode_mm": [118, 12, -4]
+    },
+    {
+      "id": "Dragon_Leg_B",
+      "label_zh": "腹前爪",
+      "color": "#E04070",
+      "seeds": [[0.0436, -0.043, 0.0821]],
+      "radius_m": 0.035,
+      "fill_holes": true,
+      "explode_mm": [28, -105, -70]
+    },
+    {
+      "id": "Dragon_Leg_C",
+      "label_zh": "左下爪",
+      "color": "#A040E0",
+      "seeds": [[-0.0939, 0.042, 0.0652]],
+      "radius_m": 0.045,
+      "fill_holes": true,
+      "explode_mm": [-115, 22, -58]
+    }
+  ]
+}

@@ -152,6 +152,112 @@
       "color_depth": 16,
       "duration_sec": 50,
       "log": "/home/roland/ai3d/logs/render_dragon01_final_20261021-082824.log"
+    },
+    "rig": {
+      "time": "2026-10-22T10:21:43",
+      "blender": "4.2.10 LTS",
+      "mesh": {
+        "verts": 119320,
+        "edges": 366651,
+        "faces": 249999,
+        "tris": 249999,
+        "dims": [
+          0.2499,
+          0.1278,
+          0.35
+        ],
+        "min": [
+          -0.125,
+          -0.0639,
+          0.0
+        ],
+        "max": [
+          0.125,
+          0.0639,
+          0.35
+        ],
+        "materials": [
+          "Dragon_Bronze"
+        ]
+      },
+      "rig": {
+        "ok": true,
+        "project": "dragon01",
+        "config": "/home/roland/ai3d/projects/dragon01/rig.json",
+        "rig_blend": "/home/roland/ai3d/projects/dragon01/rig/dragon01_rig.blend",
+        "manifest": "/home/roland/ai3d/projects/dragon01/rig/rig_manifest.json",
+        "glb": "/home/roland/ai3d/projects/dragon01/rig/glb/dragon01_rig.glb",
+        "blend_bytes": 45625924,
+        "glb_bytes": 14691720,
+        "bones": 14,
+        "meshes": 9,
+        "blend_stats": [
+          {
+            "part": "Dragon_Head",
+            "bone": "head",
+            "cut_vertices": 380,
+            "blended_vertices": 9631,
+            "radius_m": 0.065
+          },
+          {
+            "part": "Dragon_Leg_A",
+            "bone": "leg_A",
+            "cut_vertices": 149,
+            "blended_vertices": 3196,
+            "radius_m": 0.035
+          },
+          {
+            "part": "Dragon_Leg_B",
+            "bone": "leg_B",
+            "cut_vertices": 182,
+            "blended_vertices": 7990,
+            "radius_m": 0.035
+          },
+          {
+            "part": "Dragon_Leg_C",
+            "bone": "leg_C",
+            "cut_vertices": 139,
+            "blended_vertices": 5383,
+            "radius_m": 0.035
+          }
+        ]
+      }
+    },
+    "rig-verify": {
+      "time": "2026-10-22T10:21:53",
+      "blender": "4.2.10 LTS",
+      "mesh": {
+        "verts": 119320,
+        "edges": 366651,
+        "faces": 249999,
+        "tris": 249999,
+        "dims": [
+          0.2499,
+          0.1278,
+          0.35
+        ],
+        "min": [
+          -0.125,
+          -0.0639,
+          0.0
+        ],
+        "max": [
+          0.125,
+          0.0639,
+          0.35
+        ],
+        "materials": [
+          "Dragon_Bronze"
+        ]
+      },
+      "glb": "/home/roland/ai3d/projects/dragon01/rig/glb/dragon01_rig.glb",
+      "report": "/home/roland/ai3d/projects/dragon01/rig/verify_report.json"
+    },
+    "rig-pose": {
+      "time": "2026-10-22T10:16:26",
+      "blender": "4.2.10 LTS",
+      "blend": "/home/roland/ai3d/projects/dragon01/rig/dragon01_rig.blend",
+      "preview": "/home/roland/ai3d/projects/dragon01/rig/preview"
     }
   },
   "comfy_runs": [

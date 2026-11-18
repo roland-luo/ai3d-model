@@ -58,6 +58,9 @@
 ├── workflows/ui/         # 给人看的 UI 工作流（备查）
 ├── prompts/              # 提示词模板 + 每个项目的提示词
 ├── projects/<名字>/      # 每个项目的输入、GLB、run.json
+│   ├── rig.json          # 可选：骨架配置（件/骨/权重/预览/验收）
+│   ├── parts/            # 可选：分件工程、单件 GLB、预览、manifest
+│   └── rig/              # 可选：骨架工程、绑定 GLB、姿态预览、两份报告
 ├── blend/                # Blender 工程
 ├── renders/              # 预览和 4K 成品
 ├── scripts/
@@ -69,7 +72,7 @@
 │   ├── download_weights.sh
 │   ├── finalize_weights.sh
 │   ├── render_final.sh   # CLI 渲 4K / 预览
-│   └── blender/          # 分阶段 Blender 脚本
+│   └── blender/          # 分阶段脚本（25_parts 分件、32_rig 绑定、35 验收；run_rig.py 一键）
 ├── logs/
 └── backups/              # 升级前的 venv / 配置
 ```
@@ -507,6 +510,136 @@ python3 ~/ai3d/scripts/comfy_run.py edit \
 - 加了文字/logo：cfg=1 时 negative prompt 不生效，直接换 seed 重跑。
 - 想要真正可排版的标题：在变体图上方留出负空间（提示词写 `deep black negative space on the left for a title`），再用设计工具压字；不要指望模型把中文字排对。
 
+### 4.10 拆成可编辑部件（可选，dragon01 范例）
+
+**做什么**：AI 重建出来的龙、兽、角色常常是“一张皮”：角、须、爪和身体粘在同一个网格里，整体重网格化也分不开。`25_parts.py` 用“种子 + 测地线生长”或“胶囊折线”在表面上认领区域，把整块网格拆成多个独立对象。dragon01 已拆成 9 件：龙身、龙头、龙角、鬃毛、2 根龙须、3 只爪。
+
+**为什么不选 Hy3D Instant-Meshes Remesh**：它主要解决减面/面片排布，不做语义分件；而且我们实测的版本没有把新拓扑交回场景，还会丢 UV/顶点色。分件和重网格化是两件事，先把件分开，再按需对单件重拓扑，顺序才对。
+
+**怎么敲**：
+
+```bash
+# 分件（读源 .blend，产物写到 projects/dragon01/parts/，不覆盖源文件）
+~/.local/bin/blender -b ~/ai3d/blend/dragon01.blend \
+  --python ~/ai3d/scripts/blender/25_parts.py -- \
+  --config ~/ai3d/projects/dragon01/parts.json
+
+# 预览：组装图 + 爆炸图 + 9 张单件图
+~/.local/bin/blender -b ~/ai3d/projects/dragon01/parts/dragon01_parts.blend \
+  --python ~/ai3d/scripts/blender/27_parts_preview.py -- \
+  --config ~/ai3d/projects/dragon01/parts.json \
+  --out ~/ai3d/projects/dragon01/parts/preview
+
+# 九宫格验收板
+python3 ~/ai3d/scripts/blender/28_parts_sheet.py \
+  --manifest ~/ai3d/projects/dragon01/parts/parts_manifest.json \
+  --cells ~/ai3d/projects/dragon01/parts/preview/cells \
+  --out ~/ai3d/projects/dragon01/parts/preview/dragon01_parts_sheet.png
+
+# 重新导入 GLB 验网格数、原点、材质
+~/.local/bin/blender -b --python ~/ai3d/scripts/blender/29_verify_parts_glb.py -- \
+  --glb ~/ai3d/projects/dragon01/parts/glb/dragon01_parts.glb \
+  --parts-dir ~/ai3d/projects/dragon01/parts/glb --expect 9
+```
+
+**怎么算成功**：
+
+- 第 1 条以 `[OK] 分件完成：9 件` 结尾，生成 `parts/dragon01_parts.blend`、`parts_manifest.json` 和 `glb/` 下 1 个组合 GLB + 9 个单件 GLB。
+- 打开 `parts/dragon01_parts.blend`，集合 `dragon01_Parts` 里正好 9 个 `Dragon_*` 网格；源龙 `dragon01_model` 隐藏保留；每个单件原点在自己包围盒中心。
+- 第 4 条以 `[OK] 验收通过` 结尾：组合 GLB 9 个网格、249,704 个三角面，单件原点 `(0,0,0)`、材质 `Dragon_Bronze` 都在。
+- 九宫格是 1900×1778，9 件都有中文名和面数。
+
+**失败查哪**：
+
+- `找不到 source_object`：配置里的 `source_object` 必须和源文件里的网格名一致；dragon01 是 `dragon01_model`。
+- 某个部件没分到面：调大 `radius_m` 或改 `seeds`；细长部位用 `capsule`，别用球。先加 `--print-fps 32` 挑点，再用 `--dry-run` 看面数。
+- 预览黑图/空帧：确认打开的是 `parts/dragon01_parts.blend`，不是源文件；预览脚本会自己切 Workbench。
+- 切口是开放边：源网格有 15,740 条非流形边，补洞只能尽力而为。`solidify_mm` 可以加厚，但实测 1.2 mm 会出现边缘毛刺，不保证水密，打印前仍需修模。
+- 更多参数、已知限制和后续重拓扑方案：见 `projects/dragon01/parts/README.md`。
+
+> 这套分件脚本是配置驱动的，换模型时复制一份 `parts.json`，改 `source_object` 和种子即可。源文件始终只读，所有产物写在项目自己的 `parts/` 目录。
+
+### 4.11 给分件模型装第一版骨架（可选，dragon01 范例）
+
+**做什么**：给 9 个部件装 14 根骨，能摆姿势、能导出带蒙皮的 GLB。这不是最终动画骨架：`body` 是一整根骨，**身体暂时不能沿脊柱弯曲**；头、角、鬃毛、3 只爪、2 根龙须可以各自动。为什么不做脊柱、切口和龙须缺口怎么处理，见 `projects/dragon01/rig/README.md`。
+
+这一阶段已经接进流水线：`projects/dragon01/rig.json` 描述部件、骨头、权重、姿态和验收规则；`scripts/blender/run_rig.py` 按顺序跑 32 → 35 → 33 → 34，最后写两份机器可读报告。换模型时改配置，不用复制脚本。
+
+**怎么敲**：
+
+```bash
+cd ~/ai3d
+
+# 一条命令：建骨 → GLB 验收 → 姿势预览 → 验收板
+python3 scripts/blender/run_rig.py --project dragon01
+
+# 只想先看会执行什么，不真跑
+python3 scripts/blender/run_rig.py --project dragon01 --dry-run
+```
+
+跑完生成/覆盖：
+
+- `rig/dragon01_rig.blend`：主工程，休息姿势；
+- `rig/rig_manifest.json`：骨树、每个件的绑定方式、验收测试表；
+- `rig/glb/dragon01_rig.glb`：带蒙皮的 GLB；
+- `rig/preview/rig_*.png` + `dragon01_rig_sheet.png`：预览和验收板；
+- `rig/verify_report.json` + `rig/rig_report.json`：机器验收和流水线汇总。
+
+分步跑（某一步失败时排查用）：
+
+```bash
+# 1) 搭骨架 + 绑定 + 导出 GLB（读分件工程，写 rig/，不覆盖源文件）
+~/.local/bin/blender -b projects/dragon01/parts/dragon01_parts.blend \
+  --python scripts/blender/32_rig_parts.py -- \
+  --config projects/dragon01/rig.json \
+  --out projects/dragon01/rig
+
+# 2) 重新导入 GLB，验 skin/骨数/权重/变形，并写报告
+~/.local/bin/blender -b --python scripts/blender/35_verify_rig_glb.py -- \
+  --glb projects/dragon01/rig/glb/dragon01_rig.glb \
+  --manifest projects/dragon01/rig/rig_manifest.json \
+  --report projects/dragon01/rig/verify_report.json
+
+# 3) 摆动作姿势，渲染 5 张预览（不保存 .blend）
+~/.local/bin/blender -b projects/dragon01/rig/dragon01_rig.blend \
+  --python scripts/blender/33_rig_pose.py -- \
+  --manifest projects/dragon01/rig/rig_manifest.json \
+  --out projects/dragon01/rig/preview --res 1400
+
+# 4) 拼 2×2 验收板
+python3 scripts/blender/34_rig_sheet.py \
+  --config projects/dragon01/rig.json \
+  --manifest projects/dragon01/rig/rig_manifest.json \
+  --preview projects/dragon01/rig/preview \
+  --out projects/dragon01/rig/preview/dragon01_rig_sheet.png
+```
+
+**怎么算成功**：
+
+- 一键命令以 `[OK] 绑定流水线完成：4 步` 结尾，下面列出主工程、GLB、清单、验收板、报告五个路径；本机正常约 12–20 秒。
+- `rig/rig_report.json` 里 `"ok": true`，`steps` 四步都是 `"ok": true`；`rig/verify_report.json` 的三组 `pose_tests` 也都 `"ok": true`。
+- 第 1 条日志里是 14 根骨、9 个件；身体权重是 `56552 顶点纯 body，26200 顶点带渐变`。
+- 第 2 条以 `[OK] 绑定验收通过：14.7 MB / 249,708 三角面 / 9 网格 / 14 骨 / 权重和=1` 结尾；转头 25° 时龙头位移 40.4 mm、鬃毛 0 mm，转爪 20° 时爪 14.1 mm、腿根身体 9.4 mm。
+- 第 3 条生成 `rig_rest.png`、`rig_pose_3q.png`、`rig_pose_front.png`、`rig_pose_side.png`、`rig_pose_head.png`，透明背景。
+- 第 4 条输出 `1604x1960` 的验收板，四格都有图。
+- `projects/dragon01/run.json` 的 `stages` 里会出现 `rig`、`rig-verify`、`rig-pose` 三个阶段记录。
+
+**失败查哪**：
+
+- `[×] 找不到骨架配置 .../rig.json`：配置文件丢了；从本项目复制一份 `rig.json`，或检查 `AI3D_RIG_CONFIG`。
+- `[×] 当前场景只有部分件，缺少 [...]`：`rig.json` 里的 `rigid` / `whiskers` 件名和分件工程对不上；先用 `parts/parts_manifest.json` 核对名字。
+- 一键脚本中途停下：终端会写 `第「某步」步失败`，并给一句先查什么；打开 `rig/rig_report.json` 看 `failed_step`、`hint` 和该步退出码，前面的步骤不会白跑。
+- 姿势表里的骨头不存在：`rig.json` 的 `preview.pose` 或 `verify.pose_tests` 写错了骨名；骨名以 `rig_manifest.json` 的 `bones[]` 为准。
+- 找不到 `Dragon_Rig`：打开的是分件工程，不是 `rig/dragon01_rig.blend`。
+- 骨架被网格挡住：选中 `Dragon_Rig`，在 Object Data Properties → Viewport Display 勾 In Front；或 `Alt+H` 取消隐藏。
+- 转骨网格不动：没进 Pose Mode，或在 Object Mode 转了整个对象。
+- 头转鬃毛也动：旧工程；重跑一键命令，`mane` 的父级应该是 `body`。
+- 转头看到颈切口内壁、龙须根部有断口：这是源网格的开放薄壳/两个岛，不是绑定失败；限制与修法见 `projects/dragon01/rig/README.md` 第 6、7 节。
+- 验收板缺图、PIL 报错：先跑姿势预览；`run_rig.py` 会自动找带 Pillow 的 Python，找不到就显式传 `--python ~/ComfyUI/venv/bin/python`。
+- 身体不能弯：v1 的设计；要弯身体先重拓扑 + 展 UV + 加脊柱骨链，不要直接上动画。
+
+> 换模型时复制 `projects/<名字>/rig.json`，改 `source_blend`、`parts_config`、`rigid`、`whiskers`、`preview.pose`、`verify.pose_tests` 和 `file_stem` 即可；脚本本身不再写死龙的部件名。配置里的相对路径以 `rig.json` 所在目录为基准，把配置挪到别处试验时请改成绝对路径。当前只在 dragon01 上实测过，新模型的件数/骨数可以不同，但仍属于“部件级”绑定，不是脊柱蒙皮。在 Blender MCP 里也可以设 `AI3D_STAGE=rig` / `rig-pose` / `rig-verify` 分阶段调用，环境变量见 `run_stage.py` 顶部。
+
 ---
 
 ## 5. 换一个题材
@@ -715,6 +848,29 @@ exec(open("/home/roland/ai3d/scripts/blender/run_stage.py").read())
 # 预览 / 4K
 ~/ai3d/scripts/render_final.sh helmet01 preview
 ~/ai3d/scripts/render_final.sh helmet01
+
+# 分件（以 dragon01 为例；参数与限制见 projects/dragon01/parts/README.md）
+~/.local/bin/blender -b ~/ai3d/blend/dragon01.blend \
+  --python ~/ai3d/scripts/blender/25_parts.py -- \
+  --config ~/ai3d/projects/dragon01/parts.json
+~/.local/bin/blender -b ~/ai3d/projects/dragon01/parts/dragon01_parts.blend \
+  --python ~/ai3d/scripts/blender/27_parts_preview.py -- \
+  --config ~/ai3d/projects/dragon01/parts.json \
+  --out ~/ai3d/projects/dragon01/parts/preview
+python3 ~/ai3d/scripts/blender/28_parts_sheet.py \
+  --manifest ~/ai3d/projects/dragon01/parts/parts_manifest.json \
+  --cells ~/ai3d/projects/dragon01/parts/preview/cells \
+  --out ~/ai3d/projects/dragon01/parts/preview/dragon01_parts_sheet.png
+~/.local/bin/blender -b --python ~/ai3d/scripts/blender/29_verify_parts_glb.py -- \
+  --glb ~/ai3d/projects/dragon01/parts/glb/dragon01_parts.glb \
+  --parts-dir ~/ai3d/projects/dragon01/parts/glb --expect 9
+
+# 绑定（部件级 v1；一条命令跑完骨架→验收→预览→验收板）
+python3 ~/ai3d/scripts/blender/run_rig.py --project dragon01
+
+# 只重建骨架，或只复检已有 GLB
+python3 ~/ai3d/scripts/blender/run_rig.py --project dragon01 --build-only
+python3 ~/ai3d/scripts/blender/run_rig.py --project dragon01 --verify-only
 
 # 看日志
 tail -f ~/ai3d/logs/comfyui.log

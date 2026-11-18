@@ -1,0 +1,211 @@
+{
+  "schema": "ai3d.rig.v1",
+  "version": 1,
+  "name": "中国龙",
+  "rig_type": "part_level_v1",
+  "rig_name": "Dragon_Rig",
+  "file_stem": "dragon01_rig",
+  "collection": "dragon01_Parts",
+  "parts_config": "parts.json",
+  "source_blend": "parts/dragon01_parts.blend",
+  "cleanup_objects": [
+    "dragon01_Parts_Root"
+  ],
+  "units": "m",
+
+  "notes": [
+    "身体是刚性绑定到 body 骨；头和四肢是刚性绑定；两根龙须是 3 骨平滑权重。",
+    "鬃毛挂在 body 上而不是 head 上，转头时它仍能遮住颈后切口。",
+    "这不是最终的脊柱蒙皮。身体的非流形薄壳要先重拓扑，才能沿脊柱变形。",
+    "所有件保留独立对象，可以在 pose 模式下单独调骨，也可以在编辑模式改网格。"
+  ],
+
+  "root": {
+    "bone": "root",
+    "head": [0, 0, 0],
+    "length_m": 0.05
+  },
+
+  "body": {
+    "part": "Dragon_Body",
+    "bone": "body",
+    "parent": "root",
+    "length_m": 0.12
+  },
+
+  "rigid": [
+    {
+      "part": "Dragon_Head",
+      "bone": "head",
+      "parent": "body",
+      "pivot_from": "Dragon_Body",
+      "tail": "bounds_center",
+      "min_length_m": 0.035,
+      "fallback_dir": [0, 0, 0.03],
+      "blend_radius_m": 0.065
+    },
+    {
+      "part": "Dragon_Antlers",
+      "bone": "antlers",
+      "parent": "head",
+      "pivot_from": "Dragon_Head",
+      "tail": "farthest",
+      "min_length_m": 0.025,
+      "fallback_dir": [0, 0, 0.03]
+    },
+    {
+      "part": "Dragon_Mane",
+      "bone": "mane",
+      "parent": "body",
+      "pivot_from": "Dragon_Head",
+      "tail": "farthest",
+      "min_length_m": 0.04,
+      "fallback_dir": [-1, 0, 0]
+    },
+    {
+      "part": "Dragon_Leg_A",
+      "bone": "leg_A",
+      "parent": "body",
+      "pivot_from": "Dragon_Body",
+      "tail": "farthest",
+      "min_length_m": 0.025,
+      "fallback_dir": [1, 0, 0],
+      "blend_radius_m": 0.035
+    },
+    {
+      "part": "Dragon_Leg_B",
+      "bone": "leg_B",
+      "parent": "body",
+      "pivot_from": "Dragon_Body",
+      "tail": "farthest",
+      "min_length_m": 0.025,
+      "fallback_dir": [1, 0, 0],
+      "blend_radius_m": 0.035
+    },
+    {
+      "part": "Dragon_Leg_C",
+      "bone": "leg_C",
+      "parent": "body",
+      "pivot_from": "Dragon_Body",
+      "tail": "farthest",
+      "min_length_m": 0.025,
+      "fallback_dir": [1, 0, 0],
+      "blend_radius_m": 0.035
+    }
+  ],
+
+  "whiskers": [
+    {
+      "part": "Dragon_Whisker_A",
+      "prefix": "whisker_A",
+      "parent": "head",
+      "segments": 3,
+      "polyline": "capsule"
+    },
+    {
+      "part": "Dragon_Whisker_B",
+      "prefix": "whisker_B",
+      "parent": "head",
+      "segments": 3,
+      "polyline": "surface_path",
+      "samples": 12,
+      "orient_to": "Dragon_Head"
+    }
+  ],
+
+  "preview": {
+    "pose": [
+      ["body", "Z", 8],
+      ["body", "X", -4],
+      ["head", "Z", -14],
+      ["head", "X", -6],
+      ["leg_A", "X", -20],
+      ["leg_A", "Z", 6],
+      ["leg_B", "X", 14],
+      ["leg_C", "Y", 12],
+      ["whisker_A_2", "Z", 6],
+      ["whisker_A_3", "Z", 5],
+      ["whisker_B_2", "Z", -6],
+      ["whisker_B_3", "Z", -5]
+    ],
+    "head_parts": [
+      "Dragon_Head",
+      "Dragon_Antlers",
+      "Dragon_Mane",
+      "Dragon_Whisker_A",
+      "Dragon_Whisker_B"
+    ],
+    "head_hide": [
+      "Dragon_Leg_A",
+      "Dragon_Leg_B",
+      "Dragon_Leg_C"
+    ],
+    "camera": {
+      "rest": [0.55, -1.65, 0.30],
+      "pose_3q": [0.55, -1.65, 0.30],
+      "pose_front": [0.0, -1.65, 0.15],
+      "pose_side": [-1.65, 0.0, 0.15],
+      "head": [0.45, -1.55, 0.35]
+    }
+  },
+
+  "sheet": {
+    "title": "中国龙 · 部件级骨架 v1",
+    "subtitle": "9 个网格 · 14 根骨 · 部件级绑定（身体暂不沿脊柱弯曲）",
+    "cells": [
+      ["rig_rest.png", "休息姿势", "骨架默认状态 · 9 件都在原位", "REST"],
+      ["rig_pose_3q.png", "动作 · 3/4", "body +8° · head −14° · 前爪 −20°", "POSE"],
+      ["rig_pose_front.png", "动作 · 正面", "颈根 / 腿根由 body 渐变权重跟随", "POSE"],
+      ["rig_pose_head.png", "头部特写", "龙须 3 骨平滑 · 角跟 head、鬃毛跟 body", "DETAIL"]
+    ],
+    "footer": [
+      "限制：身体仍是单根 body 骨，不能沿脊柱弯曲；龙头 / 龙须是开放薄壳，大幅转动会看到切口内壁。",
+      "下一步：身体重拓扑 + 展 UV + 脊柱骨链，再把头颈拆成 neck / head 两段。重拓扑前别直接上动画。"
+    ]
+  },
+
+  "verify": {
+    "pose_tests": [
+      {
+        "name": "转头 25°",
+        "bone": "head",
+        "axis": "Z",
+        "deg": 25,
+        "moves": [
+          {"part": "Dragon_Head", "min_mm": 20},
+          {"part": "Dragon_Antlers", "min_mm": 15},
+          {"part": "Dragon_Body", "min_mm": 1}
+        ],
+        "stays": [
+          {"part": "Dragon_Mane", "max_mm": 2}
+        ]
+      },
+      {
+        "name": "转爪 20°",
+        "bone": "leg_C",
+        "axis": "Y",
+        "deg": 20,
+        "moves": [
+          {"part": "Dragon_Leg_C", "min_mm": 10},
+          {"part": "Dragon_Body", "min_mm": 0.5}
+        ],
+        "stays": [
+          {"part": "Dragon_Head", "max_mm": 1}
+        ]
+      },
+      {
+        "name": "转龙须 A 15°",
+        "bone": "whisker_A_2",
+        "axis": "Z",
+        "deg": 15,
+        "moves": [
+          {"part": "Dragon_Whisker_A", "min_mm": 5}
+        ],
+        "stays": [
+          {"part": "Dragon_Whisker_B", "max_mm": 0.5},
+          {"part": "Dragon_Head", "max_mm": 0.5}
+        ]
+      }
+    ]
+  }
+}

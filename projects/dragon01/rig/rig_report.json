@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "project": "dragon01",
+  "config": "/home/roland/ai3d/projects/dragon01/rig.json",
+  "out": "/home/roland/ai3d/projects/dragon01/rig",
+  "started": "2026-11-18T16:46:41",
+  "finished": "2026-11-18T16:46:55",
+  "duration_s": 13.8,
+  "ok": true,
+  "failed_step": null,
+  "hint": null,
+  "steps": {
+    "搭骨架与绑定": {
+      "ok": true,
+      "seconds": 4.5,
+      "cmd": "/home/roland/.local/bin/blender -b /home/roland/ai3d/projects/dragon01/parts/dragon01_parts.blend --python /home/roland/ai3d/scripts/blender/32_rig_parts.py -- --config /home/roland/ai3d/projects/dragon01/rig.json --out /home/roland/ai3d/projects/dragon01/rig"
+    },
+    "GLB 验收": {
+      "ok": true,
+      "seconds": 2.5,
+      "cmd": "/home/roland/.local/bin/blender -b --python /home/roland/ai3d/scripts/blender/35_verify_rig_glb.py -- --glb /home/roland/ai3d/projects/dragon01/rig/glb/dragon01_rig.glb --manifest /home/roland/ai3d/projects/dragon01/rig/rig_manifest.json --report /home/roland/ai3d/projects/dragon01/rig/verify_report.json"
+    },
+    "姿态预览": {
+      "ok": true,
+      "seconds": 5.7,
+      "cmd": "/home/roland/.local/bin/blender -b /home/roland/ai3d/projects/dragon01/rig/dragon01_rig.blend --python /home/roland/ai3d/scripts/blender/33_rig_pose.py -- --manifest /home/roland/ai3d/projects/dragon01/rig/rig_manifest.json --out /home/roland/ai3d/projects/dragon01/rig/preview --res 1400"
+    },
+    "拼验收板": {
+      "ok": true,
+      "seconds": 1.1,
+      "cmd": "/usr/bin/python3 /home/roland/ai3d/scripts/blender/34_rig_sheet.py --config /home/roland/ai3d/projects/dragon01/rig.json --manifest /home/roland/ai3d/projects/dragon01/rig/rig_manifest.json --preview /home/roland/ai3d/projects/dragon01/rig/preview --out /home/roland/ai3d/projects/dragon01/rig/preview/dragon01_rig_sheet.png"
+    }
+  },
+  "artifacts": {
+    "rig_blend": {
+      "path": "/home/roland/ai3d/projects/dragon01/rig/dragon01_rig.blend",
+      "exists": true,
+      "bytes": 45625924
+    },
+    "manifest": {
+      "path": "/home/roland/ai3d/projects/dragon01/rig/rig_manifest.json",
+      "exists": true,
+      "bytes": 11845
+    },
+    "glb": {
+      "path": "/home/roland/ai3d/projects/dragon01/rig/glb/dragon01_rig.glb",
+      "exists": true,
+      "bytes": 14691720
+    },
+    "sheet": {
+      "path": "/home/roland/ai3d/projects/dragon01/rig/preview/dragon01_rig_sheet.png",
+      "exists": true,
+      "bytes": 1308380
+    },
+    "verify_report": {
+      "path": "/home/roland/ai3d/projects/dragon01/rig/verify_report.json",
+      "exists": true,
+      "bytes": 1798
+    },
+    "preview_images": [
+      {
+        "path": "/home/roland/ai3d/projects/dragon01/rig/preview/rig_pose_3q.png",
+        "exists": true,
+        "bytes": 1742803
+      },
+      {
+        "path": "/home/roland/ai3d/projects/dragon01/rig/preview/rig_pose_front.png",
+        "exists": true,
+        "bytes": 1766616
+      },
+      {
+        "path": "/home/roland/ai3d/projects/dragon01/rig/preview/rig_pose_head.png",
+        "exists": true,
+        "bytes": 2028353
+      },
+      {
+        "path": "/home/roland/ai3d/projects/dragon01/rig/preview/rig_pose_side.png",
+        "exists": true,
+        "bytes": 1409534
+      },
+      {
+        "path": "/home/roland/ai3d/projects/dragon01/rig/preview/rig_rest.png",
+        "exists": true,
+        "bytes": 1716206
+      }
+    ]
+  },
+  "verify": {
+    "ok": true,
+    "time": "2026-11-18T16:46:48",
+    "glb": "/home/roland/ai3d/projects/dragon01/rig/glb/dragon01_rig.glb",
+    "manifest": "/home/roland/ai3d/projects/dragon01/rig/rig_manifest.json",
+    "bytes": 14691720,
+    "tris": 249708,
+    "meshes": 9,
+    "bones": 14,
+    "skins": 1,
+    "animations": 0,
+    "hierarchy_ok": true,
+    "weights_ok": true,
+    "weight_stats": {
+      "Dragon_Body": {
+        "vertices": 114578,
+        "ok": true
+      },
+      "Dragon_Head": {
+        "vertices": 23803,
+        "ok": true
+      },
+      "Dragon_Antlers": {
+        "vertices": 8551,
+        "ok": true
+      },
+      "Dragon_Mane": {
+        "vertices": 10709,
+        "ok": true
+      },
+      "Dragon_Leg_A": {
+        "vertices": 4409,
+        "ok": true
+      },
+      "Dragon_Leg_B": {
+        "vertices": 3133,
+        "ok": true
+      },
+      "Dragon_Leg_C": {
+        "vertices": 4853,
+        "ok": true
+      },
+      "Dragon_Whisker_A": {
+        "vertices": 1575,
+        "ok": true
+      },
+      "Dragon_Whisker_B": {
+        "vertices": 879,
+        "ok": true
+      }
+    },
+    "pose_tests": [
+      {
+        "name": "转头 25°",
+        "bone": "head",
+        "axis": "Z",
+        "deg": 25.0,
+        "values_mm": {
+          "Dragon_Head": 40.421,
+          "Dragon_Antlers": 25.382,
+          "Dragon_Body": 23.083,
+          "Dragon_Mane": 0.0
+        },
+        "ok": true
+      },
+      {
+        "name": "转爪 20°",
+        "bone": "leg_C",
+        "axis": "Y",
+        "deg": 20.0,
+        "values_mm": {
+          "Dragon_Leg_C": 14.11,
+          "Dragon_Body": 9.411,
+          "Dragon_Head": 0.0
+        },
+        "ok": true
+      },
+      {
+        "name": "转龙须 A 15°",
+        "bone": "whisker_A_2",
+        "axis": "Z",
+        "deg": 15.0,
+        "values_mm": {
+          "Dragon_Whisker_A": 12.929,
+          "Dragon_Whisker_B": 0.0,
+          "Dragon_Head": 0.0
+        },
+        "ok": true
+      }
+    ]
+  }
+}
